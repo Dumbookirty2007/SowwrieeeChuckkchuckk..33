@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Need You To Know</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+            padding: 45px 30px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeInScale 0.8s ease-out;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .emoji-heart {
+            font-size: clamp(2em, 6vw, 3.5em);
+            margin-bottom: 20px;
+            animation: heartBeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+        }
+
+        .heading {
+            font-size: clamp(2em, 7vw, 3.2em);
+            color: #2d3436;
+            font-weight: bold;
+            margin-bottom: 25px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            letter-spacing: 1px;
+        }
+
+        .message-box {
+            background: rgba(255, 255, 255, 0.25);
+            border-left: 5px solid rgba(45, 52, 54, 0.5);
+            padding: 25px 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .message-box:last-of-type {
+            margin-bottom: 30px;
+        }
+
+        .message-text {
+            color: #2d3436;
+            font-size: clamp(0.95em, 3vw, 1.15em);
+            line-height: 1.8;
+            font-weight: 500;
+            text-shadow: 0 1px 3px rgba(255, 255, 255, 0.5);
+        }
+
+        .emoji-section {
+            text-align: center;
+            font-size: clamp(1.5em, 5vw, 2.2em);
+            margin: 20px 0;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 35px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 13px 28px;
+            background: linear-gradient(135deg, #ff9a56 0%, #ff6e7f 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: clamp(0.85em, 3vw, 1.05em);
+            font-weight: 700;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(255, 110, 127, 0.4);
+            letter-spacing: 0.5px;
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .button:hover,
+        .button:active {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 110, 127, 0.6);
+        }
+
+        .button:active {
+            transform: translateY(-1px);
+        }
+
+        .button.back {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            color: #2d3436;
+            box-shadow: 0 4px 15px rgba(168, 237, 234, 0.4);
+        }
+
+        .button.back:hover,
+        .button.back:active {
+            box-shadow: 0 8px 25px rgba(168, 237, 234, 0.6);
+        }
+
+        .button.next {
+            background: linear-gradient(135deg, #ff9a56 0%, #ff6e7f 100%);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 35px 22px;
+                border-radius: 20px;
+            }
+
+            .emoji-heart {
+                margin-bottom: 15px;
+            }
+
+            .heading {
+                margin-bottom: 20px;
+            }
+
+            .message-box {
+                padding: 20px 18px;
+                margin-bottom: 15px;
+            }
+
+            .message-text {
+                font-size: 1.05em;
+            }
+
+            .button-group {
+                gap: 12px;
+                margin-top: 25px;
+            }
+
+            .button {
+                padding: 11px 24px;
+                font-size: 0.95em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 12px;
+                min-height: 100vh;
+            }
+
+            .container {
+                padding: 25px 18px;
+                border-radius: 15px;
+            }
+
+            .emoji-heart {
+                font-size: 2em;
+                margin-bottom: 12px;
+            }
+
+            .heading {
+                font-size: 1.7em;
+                margin-bottom: 15px;
+            }
+
+            .message-box {
+                padding: 15px 14px;
+                margin-bottom: 12px;
+                border-left-width: 4px;
+            }
+
+            .message-text {
+                font-size: 0.95em;
+                line-height: 1.6;
+            }
+
+            .emoji-section {
+                font-size: 1.5em;
+                margin: 15px 0;
+            }
+
+            .button-group {
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 20px;
+            }
+
+            .button {
+                width: 100%;
+                padding: 12px 20px;
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-height: 600px) and (orientation: landscape) {
+            .container {
+                padding: 15px 20px;
+            }
+
+            .heading {
+                font-size: 1.6em;
+                margin-bottom: 12px;
+            }
+
+            .message-box {
+                padding: 12px 15px;
+                margin-bottom: 8px;
+            }
+
+            .message-text {
+                font-size: 0.9em;
+                line-height: 1.4;
+            }
+
+            .button-group {
+                margin-top: 15px;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="emoji-heart">💝</div>
+        
+        <div class="heading">I Need You To Know...</div>
+        
+        <div class="message-box">
+            <div class="message-text">
+                That every day without you feels empty 💔
+            </div>
+        </div>
+
+        <div class="emoji-section">✨</div>
+
+        <div class="message-box">
+            <div class="message-text">
+                That I think about you constantly, about the way you laugh, the way you care, the way you light up my world 🌟
+            </div>
+        </div>
+
+        <div class="emoji-section">💕</div>
+
+        <div class="message-box">
+            <div class="message-text">
+                That I made mistakes, big ones, but they don't change how I feel about you. You're still everything to me 😢
+            </div>
+        </div>
+
+        <div class="emoji-section">🥺</div>
+
+        <div class="message-box">
+            <div class="message-text">
+                That I'm sorry for not being enough, for not showing up the way I should have, for taking you for granted 🙏
+            </div>
+        </div>
+
+        <div class="emoji-section">💫</div>
+
+        <div class="message-box">
+            <div class="message-text">
+                But most importantly... I want you to know that you deserve everything beautiful in this world. Whether that's with me or not, I just want you to be happy 💖
+            </div>
+        </div>
+
+        <div class="button-group">
+            <a href="page2.html" class="button back">← Back</a>
+            <a href="page4.html" class="button next">Continue... 💐</a>
+        </div>
+    </div>
+</body>
+</html>
