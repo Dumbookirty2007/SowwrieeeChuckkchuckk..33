@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Melon & Musk 🐰💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 650px;
+            background: rgba(255, 255, 255, 0.97);
+            border-radius: 25px;
+            padding: 30px 25px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
+            border: 3px solid #ff7675;
+            position: relative;
+            overflow: visible;
+        }
+
+        .rabbit-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 182, 193, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .rabbit-top-left {
+            top: 8px;
+            left: 8px;
+            width: 70px;
+            height: 70px;
+            animation: float1 3s ease-in-out infinite;
+        }
+
+        .rabbit-top-right {
+            top: 12px;
+            right: 12px;
+            width: 65px;
+            height: 65px;
+            animation: float2 3.5s ease-in-out infinite;
+        }
+
+        .rabbit-bottom-left {
+            bottom: 12px;
+            left: 12px;
+            width: 60px;
+            height: 60px;
+            animation: float3 4s ease-in-out infinite;
+        }
+
+        .rabbit-bottom-right {
+            bottom: 8px;
+            right: 8px;
+            width: 75px;
+            height: 75px;
+            animation: float4 3.2s ease-in-out infinite;
+        }
+
+        .rabbit-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        @keyframes float1 {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        @keyframes float2 {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes float3 {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
+
+        @keyframes float4 {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-12px); }
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-20px) rotate(0deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+        }
+
+        .header {
+            font-size: clamp(1.8em, 5vw, 2.5em);
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #ff7675, #fab1a0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+        }
+
+        .names {
+            font-size: clamp(1.3em, 4vw, 1.8em);
+            color: #d63031;
+            margin-bottom: 10px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+        }
+
+        .emoji-divider {
+            font-size: 1.2em;
+            margin: 15px 0;
+            letter-spacing: 8px;
+        }
+
+        .letter {
+            color: #2d3436;
+            line-height: 1.7;
+            font-size: clamp(0.95em, 3vw, 1.05em);
+            text-align: left;
+            margin: 20px 0;
+            letter-spacing: 0.3px;
+        }
+
+        .letter p {
+            margin-bottom: 12px;
+        }
+
+        .memory {
+            background: linear-gradient(135deg, rgba(255, 182, 193, 0.2), rgba(255, 218, 185, 0.2));
+            padding: 12px 15px;
+            border-radius: 12px;
+            margin: 12px 0;
+            border-left: 4px solid #ff7675;
+            font-style: italic;
+            color: #636e72;
+            font-size: clamp(0.9em, 2.5vw, 1em);
+        }
+
+        .quote {
+            font-size: clamp(1em, 3vw, 1.2em);
+            color: #d63031;
+            font-weight: 500;
+            margin: 15px 0;
+            font-style: italic;
+        }
+
+        .closing {
+            margin-top: 20px;
+            font-size: clamp(0.95em, 3vw, 1.1em);
+            color: #2d3436;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 35px;
+            gap: 12px;
+            position: relative;
+            z-index: 20;
+            flex-wrap: wrap;
+        }
+
+        .nav-buttons a {
+            flex: 1;
+            min-width: 120px;
+            padding: 11px 15px;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            color: white;
+            font-size: clamp(0.85em, 2.5vw, 1em);
+            white-space: nowrap;
+        }
+
+        .back-btn {
+            background: linear-gradient(135deg, #a29bfe, #74b9ff);
+        }
+
+        .back-btn:hover,
+        .back-btn:active {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(74, 185, 255, 0.4);
+        }
+
+        .next-btn {
+            background: linear-gradient(135deg, #fab1a0, #ff7675);
+        }
+
+        .next-btn:hover,
+        .next-btn:active {
+            transform: scale(1.05);
+            box-shadow: 0 8px 15px rgba(255, 118, 117, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 20px 18px;
+                border-radius: 20px;
+            }
+
+            .rabbit-top-left {
+                top: 6px;
+                left: 6px;
+                width: 55px;
+                height: 55px;
+            }
+
+            .rabbit-top-right {
+                top: 8px;
+                right: 8px;
+                width: 50px;
+                height: 50px;
+            }
+
+            .rabbit-bottom-left {
+                bottom: 8px;
+                left: 8px;
+                width: 48px;
+                height: 48px;
+            }
+
+            .rabbit-bottom-right {
+                bottom: 6px;
+                right: 6px;
+                width: 60px;
+                height: 60px;
+            }
+
+            .letter {
+                font-size: 0.95em;
+                line-height: 1.6;
+            }
+
+            .nav-buttons {
+                margin-top: 25px;
+                gap: 10px;
+            }
+
+            .nav-buttons a {
+                padding: 10px 12px;
+                font-size: 0.9em;
+                min-width: 100px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 18px 15px;
+                border-radius: 15px;
+            }
+
+            .rabbit-top-left,
+            .rabbit-bottom-right {
+                width: 45px;
+                height: 45px;
+            }
+
+            .rabbit-top-right,
+            .rabbit-bottom-left {
+                width: 40px;
+                height: 40px;
+            }
+
+            .header {
+                font-size: 1.5em;
+            }
+
+            .names {
+                font-size: 1.2em;
+            }
+
+            .letter {
+                font-size: 0.9em;
+                text-align: justify;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+                margin-top: 20px;
+            }
+
+            .nav-buttons a {
+                width: 100%;
+                padding: 12px;
+                font-size: 0.95em;
+                min-width: unset;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="rabbit-circle rabbit-top-left">
+            <img src="rabbit.jpg.jpeg" alt="Melon" class="rabbit-img" />
+        </div>
+
+        <div class="rabbit-circle rabbit-top-right">
+            <img src="rabbit.jpg.jpeg" alt="Musk" class="rabbit-img" />
+        </div>
+
+        <div class="rabbit-circle rabbit-bottom-left">
+            <img src="rabbit.jpg.jpeg" alt="Melon & Musk" class="rabbit-img" />
+        </div>
+
+        <div class="rabbit-circle rabbit-bottom-right">
+            <img src="rabbit.jpg.jpeg" alt="Forever loved" class="rabbit-img" />
+        </div>
+
+        <div class="content">
+            <div class="header">🐰 For My Sweet Bunnies 🐰</div>
+            <div class="names">Melon & Musk</div>
+            
+            <div class="emoji-divider">💕 🌸 ✨ 💕</div>
+
+            <div class="letter">
+                <p>Oh my precious little ones,</p>
+                
+                <p>I don't even know where to begin... The silence without your soft fur, your tiny hops, and those adorable wiggly noses is almost unbearable. You two were more than just pets—you were pure joy wrapped in fur and love.</p>
+
+                <div class="memory">
+                    "Melon, with your sweet personality and those cute little hops... Musk, with your feisty spirit and playful energy... Together, you were perfection."
+                </div>
+
+                <p>Every moment with you was a treasure I didn't realize I was collecting until it was too late. The way you'd both come running when you heard my voice, how you'd cuddle close when I needed comfort most... Those memories are now the most precious things I own.</p>
+
+                <div class="memory">
+                    "You taught me that love doesn't need words. A soft nuzzle, a tiny paw touch, or just hopping around happily was enough to fill my heart with so much warmth."
+                </div>
+
+                <p>I know you're in bunny heaven now, eating the best clover, enjoying endless sunshine, and being as adorable as ever. But oh, how I miss you both so much. The world is a little less fluffy, a little less joyful without you here.</p>
+
+                <div class="quote">"Thank you for all the love, all the cuddles, and all the happiness you brought into my life."</div>
+
+                <p>You will forever be loved, forever be remembered, and forever be in my heart. Sweet Melon and Musk, you were the best little bunnies anyone could ask for.</p>
+
+                <p>Forever your human, with endless love and happy tears. 💕🐰</p>
+            </div>
+
+            <div class="closing">
+                🌸 Rest in the softest fields of heaven 🌸<br>
+                💕 You will always be my little angels 💕
+            </div>
+
+            <div class="nav-buttons">
+                <a href="page3.html" class="back-btn">← Back</a>
+                <a href="page5.html" class="next-btn">My Poetry →</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '💕';
+            heart.style.position = 'fixed';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.top = '-20px';
+            heart.style.fontSize = (Math.random() * 15 + 8) + 'px';
+            heart.style.opacity = '0.6';
+            heart.style.pointerEvents = 'none';
+            heart.style.zIndex = '1';
+            const duration = Math.random() * 2.5 + 2.5;
+            heart.style.animation = `fall ${duration}s linear forwards`;
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                if (heart.parentNode) {
+                    heart.parentNode.removeChild(heart);
+                }
+            }, duration * 1000);
+        }
+
+        setInterval(createHeart, 1000);
+    </script>
+</body>
+</html>
