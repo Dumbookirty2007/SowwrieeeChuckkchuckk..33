@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Poetry 📝✨</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            background: linear-gradient(-45deg, #0f0f2e, #1a1a4d, #2d2d5f, #1a0033);
+            background-size: 400% 400%;
+            font-family: 'Georgia', serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            animation: gradientShift 15s ease infinite;
+            position: relative;
+            overflow-x: hidden;
+            margin: 0;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 10px 20px, #ff4d94, rgba(255, 77, 148, 0.2)),
+                radial-gradient(2px 2px at 40px 70px, #ff4d94, rgba(255, 77, 148, 0.2));
+            background-size: 200px 200px;
+            animation: particleFloat 20s linear infinite;
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes particleFloat {
+            0% { transform: translateY(0) translateX(0); }
+            100% { transform: translateY(-100vh) translateX(50px); }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: rgba(20, 10, 40, 0.9);
+            border-radius: 25px;
+            padding: 40px 25px;
+            box-shadow: 
+                0 0 50px rgba(255, 77, 148, 0.3),
+                0 0 25px rgba(138, 43, 226, 0.2);
+            border: 2px solid rgba(255, 77, 148, 0.5);
+            position: relative;
+            overflow: visible;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(255, 77, 148, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: glow 8s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        @keyframes glow {
+            0%, 100% { transform: scale(1); opacity: 0.4; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+        }
+
+        .content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 35px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid rgba(255, 77, 148, 0.4);
+        }
+
+        .title {
+            font-size: clamp(2em, 6vw, 3em);
+            background: linear-gradient(135deg, #ff4d94, #ff69b4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 900;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            animation: titlePulse 3s ease-in-out infinite;
+        }
+
+        @keyframes titlePulse {
+            0%, 100% { filter: drop-shadow(0 0 8px rgba(255, 77, 148, 0.3)); }
+            50% { filter: drop-shadow(0 0 15px rgba(255, 77, 148, 0.5)); }
+        }
+
+        .subtitle {
+            color: #ff99cc;
+            font-size: clamp(0.95em, 3vw, 1.1em);
+            font-style: italic;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 12px;
+            margin: 25px 0;
+            padding: 20px;
+            background: rgba(255, 77, 148, 0.08);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 77, 148, 0.2);
+        }
+
+        .gallery-img {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 2px solid rgba(255, 77, 148, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.05);
+            border-color: #ff4d94;
+            box-shadow: 0 0 15px rgba(255, 77, 148, 0.4);
+        }
+
+        .poem-section {
+            margin: 40px 0;
+            text-align: center;
+            animation: sectionFadeIn 1.5s ease-out;
+            padding: 30px 20px;
+            background: rgba(255, 77, 148, 0.07);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 77, 148, 0.15);
+        }
+
+        @keyframes sectionFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .poem-title {
+            font-size: clamp(1.3em, 4vw, 1.7em);
+            background: linear-gradient(135deg, #ff69b4, #ff4d94);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 18px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .poem-text {
+            color: #e0b0ff;
+            line-height: 2;
+            font-size: clamp(0.95em, 3vw, 1.1em);
+            margin: 15px 0;
+            white-space: pre-wrap;
+            letter-spacing: 0.6px;
+            font-weight: 500;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .poem-divider {
+            margin: 30px 0;
+            text-align: center;
+            font-size: clamp(1.3em, 3vw, 1.6em);
+            letter-spacing: 12px;
+            color: #ff69b4;
+            opacity: 0.7;
+            animation: dividerGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes dividerGlow {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        .emotional-quote {
+            background: linear-gradient(135deg, rgba(255, 77, 148, 0.12), rgba(138, 43, 226, 0.12));
+            padding: 25px 20px;
+            border-radius: 15px;
+            border-left: 4px solid #ff4d94;
+            border-right: 4px solid rgba(138, 43, 226, 0.5);
+            margin: 30px 0;
+            font-style: italic;
+            color: #ff99cc;
+            font-size: clamp(1em, 3vw, 1.15em);
+            box-shadow: 0 0 20px rgba(255, 77, 148, 0.15);
+            line-height: 1.7;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            gap: 12px;
+            position: relative;
+            z-index: 20;
+            flex-wrap: wrap;
+        }
+
+        .nav-buttons a {
+            flex: 1;
+            min-width: 120px;
+            padding: 12px 15px;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 700;
+            text-align: center;
+            transition: all 0.4s ease;
+            color: white;
+            font-size: clamp(0.85em, 2.5vw, 0.95em);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            border: 2px solid;
+            white-space: nowrap;
+        }
+
+        .back-btn {
+            background: linear-gradient(135deg, #ff4d94, #ff69b4);
+            border-color: #ff4d94;
+            box-shadow: 0 0 15px rgba(255, 77, 148, 0.4);
+        }
+
+        .back-btn:hover,
+        .back-btn:active {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(255, 77, 148, 0.6);
+        }
+
+        .end-btn {
+            background: linear-gradient(135deg, #8a2be2, #6a0dad);
+            border-color: #8a2be2;
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.4);
+        }
+
+        .end-btn:hover,
+        .end-btn:active {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 12px;
+            }
+
+            .container {
+                padding: 30px 18px;
+                border-radius: 20px;
+            }
+
+            .header {
+                margin-bottom: 25px;
+            }
+
+            .title {
+                font-size: 1.8em;
+            }
+
+            .image-gallery {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                gap: 10px;
+                margin: 20px 0;
+                padding: 15px;
+            }
+
+            .poem-section {
+                padding: 20px 15px;
+                margin: 30px 0;
+            }
+
+            .poem-text {
+                font-size: 1em;
+                line-height: 1.8;
+            }
+
+            .emotional-quote {
+                padding: 18px 15px;
+                font-size: 1em;
+                margin: 20px 0;
+            }
+
+            .nav-buttons {
+                margin-top: 30px;
+                gap: 10px;
+            }
+
+            .nav-buttons a {
+                padding: 10px 12px;
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 8px;
+            }
+
+            .container {
+                padding: 20px 15px;
+                border-radius: 15px;
+            }
+
+            .title {
+                font-size: 1.5em;
+                letter-spacing: 1px;
+            }
+
+            .subtitle {
+                font-size: 0.9em;
+            }
+
+            .image-gallery {
+                grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+                gap: 8px;
+                padding: 12px;
+            }
+
+            .gallery-img {
+                border-radius: 8px;
+                border: 1.5px solid rgba(255, 77, 148, 0.2);
+            }
+
+            .poem-section {
+                padding: 15px 12px;
+                margin: 25px 0;
+            }
+
+            .poem-title {
+                font-size: 1.2em;
+            }
+
+            .poem-text {
+                font-size: 0.9em;
+                line-height: 1.7;
+            }
+
+            .poem-divider {
+                font-size: 1.2em;
+                letter-spacing: 8px;
+                margin: 20px 0;
+            }
+
+            .emotional-quote {
+                padding: 15px 12px;
+                font-size: 0.95em;
+                margin: 18px 0;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+                margin-top: 25px;
+                gap: 8px;
+            }
+
+            .nav-buttons a {
+                width: 100%;
+                padding: 12px;
+                font-size: 0.9em;
+                min-width: unset;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="header">
+                <div class="title">📝 My Poetry 📝</div>
+                <div class="subtitle">Words From The Heart</div>
+            </div>
+
+            <!-- Image Gallery -->
+            <div class="image-gallery">
+                <img src="her.png" alt="Her 1" class="gallery-img" />
+                <img src="her1.png" alt="Her 2" class="gallery-img" />
+                <img src="her2.png" alt="Her 3" class="gallery-img" />
+                <img src="her3.png" alt="Her 4" class="gallery-img" />
+                <img src="her4.png" alt="Her 5" class="gallery-img" />
+                <img src="her5.png" alt="Her 6" class="gallery-img" />
+                <img src="her6.png" alt="Her 7" class="gallery-img" />
+                <img src="her7.png" alt="Her 8" class="gallery-img" />
+                <img src="her8.png" alt="Her 9" class="gallery-img" />
+            </div>
+
+            <div class="poem-section">
+                <div class="poem-title">Baatein To Bahut Hai Kehne Ko</div>
+                <div class="poem-text">Baatein To Bahut Hai Kehne Ko..
+Magar Har Baat Jo Mai Kahunga Tumse..
+Tum Maan Logi Kya..?
+
+Mai Kahun,
+Ki Agar Mai Soya Nahi Hu Kabse..
+Bas Raat Bhar Tumhe Yaad Karta Hu..
+Tum Maan Logi Kya..?
+
+Milta Hu Tumse Kuch Pal Ke Liye, Magar Phir Pura Din Bas Tumhe Jee Bhar Ke Dekhne Ka Intezaar Karta Hu..
+Tum Maan Logi Kya..?
+
+Mai Kahu,
+Ki Duniya Bhar Ke Liye Mai Patthar Sa Hoo,
+Magar Tumhare Aage Mai Kaanch Ho Jaata Hu..
+Aur Mere Ye Aansu Bas Tumhare Liye Behte Hai..
+Toh Tum Maan Logi Kya..?</div>
+            </div>
+
+            <div class="poem-divider">✨ 💕 ✨</div>
+
+            <div class="poem-section">
+                <div class="poem-title">Meri Kamoshiyon Mein Daba Raha Hu</div>
+                <div class="poem-text">Aur Yu, Toh Ab Mai Tumse Baatein Bahut Kam Karne Laga Hu, Aur Tumhe To Lagta Bhii Hoga..
+Ki Pal Bhar Ka Pyar Tha, Pal Bhar Mai Badal Gaya..
+
+Magar Agar Mai Kahu, Ki Mai To Bas Tumhari Baatein Sunna Chahta Hu Zindagi Bhar,
+To Tum Maan Logi Kya..?
+
+Aur Jantii Ho, Mujhe Bahane Nahi Milte Tumse Baat Karne Ke, Aur Bina Kisi Matlab Ke Tumse Baat Karna Ab Nahi Hota Mujhse, Kyuki Mujhe Lagta Ki Mai Shayad Tumhe Tang Kar Raha Hu..?
+
+Aur, Mai Aaj Bhii Tumhari Baaton, Tumhari Bachkani Harqatoon Se Utna Hi Ishq Karta Hu,
+To Tum Maan Logi Kya..?
+
+Log Yaha Tak Kehne Lage Hai, Ki ab pehele se kaafi badal sa gaya hoon maain, 
+Par Mai Kahu, Ki ye badlav bhi tumhare aane ke baad hua hai,
+Toh Tum Maan logi kya..?</div>
+            </div>
+
+            <div class="emotional-quote">
+                "Hosh Me Toh Mai Bas Tumhe Dhundata Hu Na, Magar Ye Sab Kahunga Kabhi Tumse, Toh Tum Maan Logii Kya..?"
+            </div>
+
+            <div class="poem-divider">💫 🌸 💫</div>
+
+            <div class="poem-section">
+                <div class="poem-title">Tum Meri Duniya Ho</div>
+                <div class="poem-text">Aur Kahi Na Kahi, Mai Apni Bhavnaoo Ke Shor Ko Apni Kamoshiyon Me Daba Raha Hu,
+Lekin Agar Meri Aankhon Me Chipa Shor Tumse Kabhi Kahe, Ki Tum Meri Duniya,
+Mera Chaand, Mera Ishq Ho..
+Toh Tum Maan Logi Kya..?
+
+Bolo, Shikayat Hai Na Tumhe Mujh Se..
+Ke Ab Chup Ho Gaya Hu Mai..
+
+Magar, Agar Mai Bolu.. Toh Sunogi..
+Kyuki Baatein To Bahut Hai Kehne Ko..
+Magar Har Baat Jo Mai Kahunga.. Tumse..
+Tum Maan Logii Kya..?
+
+Bolo.. Chup Kyu Ho..?</div>
+            </div>
+
+            <div class="nav-buttons">
+                <a href="page4.html" class="back-btn">← Back to Melon & Musk</a>
+                <a href="index.html" class="end-btn">Begin Again →</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
