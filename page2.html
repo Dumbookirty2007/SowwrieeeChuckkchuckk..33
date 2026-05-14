@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm So Sorry</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 650px;
+            text-align: center;
+            padding: 45px 30px;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .emoji-section {
+            font-size: clamp(2.5em, 8vw, 4em);
+            margin-bottom: 25px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .heading {
+            font-size: clamp(2.2em, 7vw, 3.5em);
+            color: white;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+        }
+
+        .content {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: clamp(0.95em, 3.5vw, 1.25em);
+            line-height: 1.8;
+            margin: 25px 0;
+            font-weight: 500;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 35px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: clamp(0.85em, 3vw, 1.05em);
+            font-weight: 700;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(118, 75, 162, 0.4);
+            letter-spacing: 0.5px;
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .button:hover,
+        .button:active {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(118, 75, 162, 0.6);
+        }
+
+        .button:active {
+            transform: translateY(-1px);
+        }
+
+        .button.next {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
+        }
+
+        .button.next:hover,
+        .button.next:active {
+            box-shadow: 0 8px 25px rgba(245, 87, 108, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                padding: 35px 22px;
+                border-radius: 20px;
+            }
+
+            .emoji-section {
+                margin-bottom: 18px;
+            }
+
+            .heading {
+                margin-bottom: 15px;
+            }
+
+            .content {
+                font-size: 1.05em;
+                margin: 20px 0;
+            }
+
+            .button-group {
+                gap: 12px;
+                margin-top: 25px;
+            }
+
+            .button {
+                padding: 11px 22px;
+                font-size: 0.95em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 12px;
+                min-height: 100vh;
+            }
+
+            .container {
+                padding: 25px 18px;
+                border-radius: 15px;
+            }
+
+            .emoji-section {
+                font-size: 2.5em;
+                margin-bottom: 15px;
+            }
+
+            .heading {
+                font-size: 1.8em;
+                margin-bottom: 12px;
+            }
+
+            .content {
+                font-size: 0.95em;
+                line-height: 1.6;
+                margin: 15px 0;
+            }
+
+            .button-group {
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 20px;
+            }
+
+            .button {
+                width: 100%;
+                padding: 12px 20px;
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-height: 600px) and (orientation: landscape) {
+            .container {
+                padding: 15px 20px;
+            }
+
+            .heading {
+                font-size: 1.8em;
+                margin-bottom: 8px;
+            }
+
+            .content {
+                font-size: 0.9em;
+                margin: 10px 0;
+                line-height: 1.5;
+            }
+
+            .button-group {
+                margin-top: 15px;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="emoji-section">💔</div>
+        
+        <div class="heading">I'm So Sorry</div>
+        
+        <div class="content">
+            😢<br><br>
+            I know I hurt you…<br><br>
+            And it breaks my heart every single day 💔<br><br>
+            I can't stop thinking about the pain I caused you...
+        </div>
+
+        <div class="button-group">
+            <a href="index.html" class="button">Back</a>
+            <a href="page3.html" class="button next">I need you to know... 💝</a>
+        </div>
+
+        <div class="emoji-section">😿</div>
+    </div>
+</body>
+</html>
