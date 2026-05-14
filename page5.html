@@ -12,7 +12,7 @@
         }
 
         html, body {
-            height: 100%;
+            height: auto;
             width: 100%;
         }
 
@@ -23,7 +23,7 @@
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             padding: 15px;
             animation: gradientShift 15s ease infinite;
             position: relative;
@@ -73,6 +73,7 @@
             overflow: visible;
             z-index: 10;
             backdrop-filter: blur(10px);
+            margin: 20px auto;
         }
 
         .container::before {
@@ -149,6 +150,7 @@
             border: 2px solid rgba(255, 77, 148, 0.3);
             transition: all 0.3s ease;
             cursor: pointer;
+            display: block;
         }
 
         .gallery-img:hover {
@@ -165,6 +167,8 @@
             background: rgba(255, 77, 148, 0.07);
             border-radius: 15px;
             border: 1px solid rgba(255, 77, 148, 0.15);
+            max-height: 500px;
+            overflow-y: auto;
         }
 
         @keyframes sectionFadeIn {
@@ -187,6 +191,10 @@
             margin-bottom: 18px;
             font-weight: 700;
             letter-spacing: 2px;
+            position: sticky;
+            top: 0;
+            background-color: rgba(20, 10, 40, 0.95);
+            padding: 10px 0;
         }
 
         .poem-text {
@@ -198,6 +206,7 @@
             letter-spacing: 0.6px;
             font-weight: 500;
             text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+            word-wrap: break-word;
         }
 
         .poem-divider {
@@ -282,6 +291,25 @@
             box-shadow: 0 0 30px rgba(138, 43, 226, 0.6);
         }
 
+        /* Scrollbar Styling */
+        .poem-section::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .poem-section::-webkit-scrollbar-track {
+            background: rgba(255, 77, 148, 0.1);
+            border-radius: 10px;
+        }
+
+        .poem-section::-webkit-scrollbar-thumb {
+            background: rgba(255, 77, 148, 0.4);
+            border-radius: 10px;
+        }
+
+        .poem-section::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 77, 148, 0.6);
+        }
+
         @media (max-width: 768px) {
             body {
                 padding: 12px;
@@ -290,6 +318,7 @@
             .container {
                 padding: 30px 18px;
                 border-radius: 20px;
+                margin: 15px auto;
             }
 
             .header {
@@ -310,6 +339,7 @@
             .poem-section {
                 padding: 20px 15px;
                 margin: 30px 0;
+                max-height: 450px;
             }
 
             .poem-text {
@@ -342,6 +372,7 @@
             .container {
                 padding: 20px 15px;
                 border-radius: 15px;
+                margin: 10px auto;
             }
 
             .title {
@@ -357,6 +388,7 @@
                 grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
                 gap: 8px;
                 padding: 12px;
+                margin: 15px 0;
             }
 
             .gallery-img {
@@ -367,10 +399,12 @@
             .poem-section {
                 padding: 15px 12px;
                 margin: 25px 0;
+                max-height: 400px;
             }
 
             .poem-title {
                 font-size: 1.2em;
+                margin-bottom: 15px;
             }
 
             .poem-text {
